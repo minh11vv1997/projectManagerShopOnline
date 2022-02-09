@@ -1,0 +1,89 @@
+﻿@using SharedObjects
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var blog = (SharedObject.ValueObjects.VBlog)ViewBag.Blog;
+}
+@model IEnumerable<SharedObject.ValueObjects.VBlogDetail>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-12">
+                        <span class="caption-subject font-green-sharp bold uppercase">
+                            Quản lý chi tiết bài viết: @blog.Tittle
+                        </span>
+                    </div>
+
+                    <div class="portlet-body">
+
+                        <div class="table-toolbar">
+
+                            <div class="col-md-2 col-sm-12 col-xs-12 pull-left">
+                                <a class="btn btn-success" href="@Url.Action("EditBlogDetail","BlogDetail", new {blogId =""+ blog.BlogId })" data-toggle="modal" id="btn-add">Tạo mới</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive col-md-12">
+                    <table class="table table-bordered table-hover table-striped table-responsive">
+                        <thead>
+                            <tr class="text-center">
+
+                                <td>Ngày tạo</td>
+                                <td>Số thứ tự</td>
+                                <td>Tiêu đề</td>
+                                <td>Tác vụ</td>
+
+                            </tr>
+                        </thead>
+                        <tbody id="table-courseCategory">
+                            @foreach (var item in Model)
+                            {
+                                <tr id="tr-@item.BlogDetailId" class="text-center">
+
+                                    <td>
+                                        @{ string dateDisplay = DateTimeService.FormatDateTime((DateTime)item.DateCreated); }
+                                        @dateDisplay
+                                    </td>
+                                    <td> @item.Number</td>
+
+                                    <td> @item.Tittle</td>
+
+                                    <td class="text-center">
+                                        <a title="Cập nhật" class="btn default btn-xs green update" href="@Url.Action("EditBlogDetail","BlogDetail", new {blogDetailId = item.BlogDetailId, blogId = item.BlogId })">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+
+                                        <a title="Xóa" class="btn default btn-xs red delete" data-id="@item.BlogDetailId"><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="pagination">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Script{
+  
+    <script src="~/js/BlogDetail.js"></script>
+}
+
+
+
+
+

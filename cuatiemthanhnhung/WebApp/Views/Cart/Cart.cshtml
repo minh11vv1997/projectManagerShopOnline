@@ -1,0 +1,103 @@
+﻿@section Script{ 
+    <script src="~/js/cart.js"></script>
+}
+
+<div class="hero-wrap hero-bread" style="background-image: url('../Asset/images/bg_1.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span> </p>
+                <h1 class="mb-0 bread">Giỏ hàng của bạn</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="cart-list">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-content">
+                            <!-- END TR-->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+        
+            <div class="col-lg-6 mt-5 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>Thông tin khách hàng</h3>
+                    <p>Vui lòng nhập thông tin, chúng tôi sẽ liên hệ với bạn sớm</p>
+                    <form id="frm-save" class="info">
+                        <div class="form-group">
+                            <label for="txt-FullName">Họ tên</label>
+                            <input type="text" id="txt-FullName" class="form-control text-left px-3" placeholder="Họ tên" name="FullName" >
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-Mobile">Số điện thoại</label>
+                            <input type="text" id="txt-Mobile" class="form-control text-left px-3" placeholder="Số điện thoại" name="Mobile">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txt-Email">Email</label>
+                            <input type="text" id="txt-Email" class="form-control text-left px-3" placeholder="Email" name="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-Address">Địa chỉ giao hàng</label>
+                            <input type="text" id="txt-Address"  class="form-control text-left px-3" placeholder="Địa chỉ giao hàng" name="Address">
+                        </div>
+                    </form>
+                </div>
+             
+            </div>
+            <div class="col-lg-6 mt-5 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>Giỏ hàng</h3>
+                 
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>Tổng tiền</span>
+                        <span id="total-money"></span>
+                    </p>
+                </div>
+                <p><a id="checkout" class="btn btn-primary py-3 px-4">Đặt hàng</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+    <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+            <div class="col-md-6">
+                <h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
+                <span>Get e-mail updates about our latest shops and special offers</span>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <form action="#" class="subscribe-form">
+                    <div class="form-group d-flex">
+                        <input type="text" class="form-control" placeholder="Enter email address">
+                        <input type="submit" value="Subscribe" class="submit px-3">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

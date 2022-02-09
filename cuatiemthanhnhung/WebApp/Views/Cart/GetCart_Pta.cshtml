@@ -1,0 +1,26 @@
+﻿@model List<SharedObject.ViewModels.ShoppingCartViewModel>
+@foreach (var item in Model)
+{
+   
+<tr class="text-center">
+    <td class="product-remove"><a class="remove" data-id="@item.Product.ProductId"><span class="ion-ios-close"></span></a></td>
+
+    <td class="image-prod"><div class="img" style="background-image:url(@item.Product.Image);"></div></td>
+
+    <td class="product-name">
+        <h3>@item.Product.ProductName</h3>
+       
+    </td>
+
+    <td class="price">$@item.Price</td>
+
+    <td class="quantity">
+        <div class="input-group mb-3">
+            <input type="text" id="quantity-@item.Product.ProductId" name="quantity" class="quantity form-control input-number" value="@item.Quantity" min="1" max="100">
+        </div>
+    </td>
+
+    <td class="total">@item.TotalMoney</td>
+    <td > <a data-id="@item.Product.ProductId"  class="btn btn-success update" style="color: white"> Cập nhật</a> </td>
+</tr>
+}

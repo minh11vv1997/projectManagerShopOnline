@@ -1,0 +1,111 @@
+﻿
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light" style="height:500px">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-12">
+                        <span class=" text-center font-green-sharp bold uppercase">
+                            Manage role <span id="txt-RoleName">@ViewBag.RoleName</span>
+                        </span>
+
+                    </div>
+
+                    <div class="portlet-body">
+
+                        <div class="table-toolbar">
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive col-md-6 table-responsive">
+                    <h5>Users in role</h5>
+                    <table class="table table-bordered table-hover table-striped ">
+                        <thead>
+                            <tr class="text-center">
+
+                                <td>Username</td>
+
+                                <td>Utilities</td>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="table-a">
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="table-responsive col-md-6 table-responsive">
+                    <h5>Users <span style="color: red">NOT</span> in role</h5>
+                    <table class="table table-bordered table-hover table-striped ">
+                        <thead>
+                            <tr class="text-center">
+
+                                <td>Username</td>
+
+                                <td>Utilities</td>
+
+                            </tr>
+                        </thead>
+                        <tbody id="table-b">
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--Modal arear-->
+
+<div class="modal-area">
+
+    <div class="modal fade" id="modal-add" tabindex="-1" role="columnheader" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Update User </h4>
+                    <p hidden id="hid-UserId"></p>
+                </div>
+                <form class="modal-body" id="frm-save">
+
+                    <div class="form-group">
+                        <label for="txt-CourseName">Email</label>
+                        <input type="text" class="form-control" id="txt-Email" name="Email" style="color:mediumvioletred">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-Image">UserName</label>
+                        <input type="text" class="form-control" id="txt-UserName" name="UserName">
+                    </div>
+
+
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn blue" id="btn-save">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Kết thúc Modal thêm, update-->
+
+</div>
+
+@section Script {
+    <script src="~/js/manage-role.js"></script>
+}

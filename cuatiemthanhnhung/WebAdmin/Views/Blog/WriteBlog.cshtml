@@ -1,0 +1,124 @@
+﻿
+@model List<SharedObject.ValueObjects.VBlogCategory>
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light" style="min-height:1000px">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-9">
+                        <span class="caption-subject font-green-sharp bold uppercase" id="span-title">
+                            @*Thêm mới, cập nhật bài viết!*@
+                        </span>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="table-toolbar">
+
+                            <div class="col-md-4 col-sm-12 col-xs-12 pull-right">
+
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button style="font-size:90%" title="Thêm khóa học liên quan" type="button" class="btn btn-success" id="btn-addTag"><span class="glyphicon glyphicon-plus"></span></button>
+                                    <button  id="btn-saveBlog" type="button" class="btn btn-success">Lưu bài viết</button>
+                                    <button title="Làm mới" type="button" class="btn btn-success hidden-xs" id="btn-refresh">
+                                        <span class="glyphicon glyphicon-repeat
+" style="font-size:90%"></span> 
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form class="modal-body" id="frm-save">
+
+                        @*hidden id*@
+                        <p hidden id="hid-BlogId">@ViewBag.BlogId</p>
+
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="txt-Tittle">Tên bài viết</label>
+                            <input type="text" class="form-control" id="txt-Tittle" name="Tittle" style="color:mediumvioletred">
+                        </div>
+
+
+
+
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="txt-BlogImage">Hình ảnh</label>
+                            <input type="text" class="form-control" id="txt-BlogImage" name="BlogImage">
+                        </div>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="txt-BackGround">Hình nền</label>
+                            <input type="text" value="0" class="form-control" id="txt-BackGround" name="BackGround">
+                        </div>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="txt-Seen">Lượt xem</label>
+                            <input type="number" value="0" class="form-control" id="txt-Seen" name="Seen">
+                        </div>
+
+
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="select-Status">Bài viết lập trình hay ngoại ngữ</label>
+                            <select class="form-control" id="select-Status" name="Status">
+                                <option value="">Chọn loại bài viết</option>
+                                <option selected value="1">Bài viết nối bật</option>
+                                <option value="2">Bài viết thông thường</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="select-Status">Thể loại</label>
+                            <select required id="select-BlogCateId" class="form-control" name="BlogCateId" asp-items="@(new SelectList(Model,"BlogCateId","BlogCateName"))">
+                                <option selected value="">Chọn thể loại bài viết</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-12 col-xs-12">
+                            <label for="txt-Summary">Tóm tắt nội dung</label>
+                            <textarea rows="5" placeholder="Mô tả Seo" class="form-control" id="txt-Summary" name="Summary"></textarea>
+
+                        </div>
+                        <div class="form-group col-md-12 col-xs-12">
+                            <label for="txt-SeoTittle">Tiêu đề Seo</label>
+                            <input type="text" class="form-control" id="txt-SeoTittle" name="SeoTittle">
+                        </div>
+
+                        <div class="form-group col-md-12 col-xs-12">
+                            <label for="txt-SeoDescription">Mô tả Seo</label>
+                            <textarea rows="5" placeholder="Mô tả Seo" class="form-control" id="txt-SeoDescription" name="SeoDescription"></textarea>
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="select-Status">Danh sách khóa học liên quan</label>
+                            <div class="tagcloud" id="tagcloud">
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="modal-area">
+
+
+</div>
+@section Script{
+
+    <script src="~/js/WriteBlog.js"></script>
+}

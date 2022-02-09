@@ -1,0 +1,11 @@
+﻿@model List<SharedObject.ValueObjects.VBlogCategory>
+@using SharedObject.Extensions
+<div class="dropdown-menu" aria-labelledby="dropdown04">
+    <a class="dropdown-item" href="/kien-thuc">Tất cả thể loại</a>
+    @foreach (var item in Model)
+    {
+
+        string url = $"/kien-thuc/{"" + item.BlogCateId}/{item.BlogCateName.ToAscii()}.html";
+<a class="dropdown-item" href="@url">@item.BlogCateName</a>}
+
+</div>

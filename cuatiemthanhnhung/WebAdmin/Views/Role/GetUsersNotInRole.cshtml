@@ -1,0 +1,13 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityUser>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <span class="badge badge-success">@item.UserName</span>
+        </td>
+        <td>
+            <a class="btn default btn-xs green assign" data-username="@item.UserName" title="Remove user"> <span class="glyphicon glyphicon-plus"></span></a>
+        </td>
+    </tr>
+}

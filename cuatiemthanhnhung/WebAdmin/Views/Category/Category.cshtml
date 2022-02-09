@@ -1,0 +1,115 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-12">
+                        <span class="caption-subject font-green-sharp bold uppercase">
+                            Quản lý danh mục sản phẩm
+                        </span>
+                    </div>
+
+                    <div class="portlet-body">
+
+                        <div class="table-toolbar">
+
+                            <div class="col-md-2 col-sm-12 col-xs-12 pull-left">
+                                <a class="btn btn-success" href="#modal-add" data-toggle="modal" id="btn-add">Tạo mới</a>
+
+                            </div>
+                    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive col-md-12">
+                    <table class="table table-bordered table-hover table-striped table-responsive">
+                        <thead>
+                            <tr class="text-center">
+
+                                <td width="10%">Ngày tạo</td>
+                                <td width="15%">Tên danh mục</td>
+                                <td width="15%">Hình ảnh</td>
+                                <td width="10%">Tiêu đề Seo</td>
+                                <td width="15%">Mô tả Seo</td>
+
+                                <td width="15%">Tác vụ</td>
+                            </tr>
+                        </thead>
+                        <tbody id="table-content">
+                        </tbody>
+                    </table>
+                    <div class="pagination" id="pagination">
+                    </div>
+                </div>
+               
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+@*Modal arear*@
+
+<div class="modal-area">
+    @*Modal thêm, update*@
+    <div class="modal fade" id="modal-add" tabindex="-1" role="columnheader" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Thêm mới, cập nhật danh mục sản phẩm </h4>
+                    <p hidden id="hid-id"></p>
+                </div>
+                <form class="modal-body" id="frm-save">
+
+                    <div class="form-group">
+                        <label for="txt-CategoryName">Tên danh mục</label>
+                        <input type="text" class="form-control" id="txt-CategoryName" name="CategoryName" style="color:mediumvioletred">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-Image">Hình ảnh</label>
+                        <input type="text" class="form-control" id="txt-Image" name="Image">
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-SeoTittle">Tiêu đề Seo</label>
+                        <input type="text" class="form-control" id="txt-SeoTittle" name="SeoTittle">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txt-SeoDescription">Nội dung Seo</label>
+                        <input type="text" class="form-control" id="txt-SeoDescription" name="SeoDescription">
+                    </div>
+
+
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn blue" id="btn-save">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Kết thúc Modal thêm, update*@
+
+</div>
+
+@section Script{
+
+    <script src="~/js/category.js"></script>
+}
+
+
+
+

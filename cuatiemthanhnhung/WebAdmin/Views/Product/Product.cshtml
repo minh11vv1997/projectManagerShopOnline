@@ -1,0 +1,172 @@
+﻿@model List<SharedObject.ValueObjects.VCategory>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light" style="height:1500px">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-12">
+                        <span class="caption-subject font-green-sharp bold uppercase">
+                            Quản lý sản phẩm
+                        </span>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="table-toolbar">
+                            <div class="col-md-1 col-sm-12 col-xs-12 pull-left">
+                                <a class="btn btn-success" href="#modal-add" data-toggle="modal" id="btn-add">Tạo mới</a>
+
+                            </div>
+                            <div class="col-md-1 col-sm-12 col-xs-12 pull-left">
+                                <a class="btn btn-success"  id="btn-exportEx">Xuất excel</a>
+
+                            </div>
+                            <div class=" col-md-10 pull-right">
+
+                                <div class="form-group col-md-6 col-md-2 col-xs-12">
+                                    <input type="text" class="form-control" id="filter-KeyWord" name="KeyWord" placeholder="Từ khóa">
+                                </div>
+                                <div class="form-group col-md-6 col-md-2 col-xs-12">
+                                    <select id="filter-CategoryId" class="form-control">
+
+                                        <option value="">Tất cả</option>
+                                        @foreach (var item in Model)
+                                        {
+                                            <option value="@item.CategoryId">@item.CategoryName</option>
+                                        }
+
+                                    </select>
+                                </div>
+                                <div class="btn-group col-md-2 col-xs-12">
+                                    <button id="btn-search" class="btn blue">
+                                        <i class="icon-magnifier"></i>
+                                    </button>
+
+                                    <button id="btn-unsearch" class="btn blue-chambray">
+                                        <i class="fa fa-undo"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive col-md-12">
+                    <table class="table table-bordered table-hover table-striped table-responsive">
+                        <thead>
+                            <tr class="text-center">
+                                <td>STT</td>
+                                <td>Ngày tạo</td>
+                                <td >Tên sản phẩm</td>
+                                <td >Danh mục</td>
+                                <td >Giá</td>
+                                <td width="10%">Hình ảnh</td>
+                                <td>Trạng thái</td>
+                                <td width="15%">Tác vụ</td>
+                            </tr>
+                        </thead>
+                        <tbody id="table-content">
+                        </tbody>
+                    </table>
+                    <div class="pagination" id="pagination">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+@*Modal arear*@
+
+<div class="modal-area">
+    @*Modal thêm, update*@
+    <div class="modal fade" id="modal-add" tabindex="-1" role="columnheader" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Thêm mới, cập nhật đa phương tiện </h4>
+
+                </div>
+                <form class="modal-body" id="frm-save">
+                    <p hidden id="hid-id"></p>
+                    <div class="form-group col-md-6">
+                        <label for="txt-ProductName">Tên sản phẩm</label>
+                        <input type="text" class="form-control" id="txt-ProductName" name="ProductName" style="color:mediumvioletred">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="select-Status">Trạng thái</label>
+                        <select id="select-Status" class="form-control" name="Status">
+                            <option value="">Chọn trạng thái</option>
+                            <option value="1">Sản phẩm nổi bật</option>
+                            <option value="2">Sản phẩm thường</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="select-CategoryId">Danh mục</label>
+                        <select id="select-CategoryId" class="form-control" name="CategoryId">
+                            <option value="">Chọn danh mục sản phẩm</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.CategoryId">@item.CategoryName</option>
+                            }
+
+                        </select>
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                        <label for="txt-SeoTittle">Tiêu đề Seo</label>
+                        <input type="text" class="form-control" id="txt-SeoTittle" name="SeoTittle">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txt-Image">Hình ảnh</label>
+                        <input type="text" class="form-control" id="txt-Image" name="Image">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="txt-Price">Giá sản phẩm</label>
+                        <input type="number" class="form-control" id="txt-Price" name="Price">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="txt-Summary">Tóm tắt</label>
+                        <textarea class="form-control" id="txt-Summary" name="Summary"></textarea>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="txt-SeoDescription">Mô tả Seo</label>
+                        <textarea class="form-control" id="txt-SeoDescription" name="SeoDescription"></textarea>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="txt-Detail">Chi tiết sản phẩm</label>
+                        <textarea class="form-control" id="txt-Detail" name="Detail"></textarea>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn blue" id="btn-save">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Kết thúc Modal thêm, update*@
+
+</div>
+
+@section Script{
+    <script src="~/js/product.js"></script>
+}
+

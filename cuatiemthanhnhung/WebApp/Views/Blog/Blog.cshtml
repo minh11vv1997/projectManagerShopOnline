@@ -1,0 +1,101 @@
+﻿@using SharedObject.Extensions
+
+@model List<SharedObject.ValueObjects.VBlogCategory>
+@{ var recentBlog = (List<SharedObject.ValueObjects.VBlog>)ViewBag.RecentBlog; }
+
+
+@section Style{
+    <style>
+        .active {
+            color: #82ae46 !important;
+            font-weight: bold;
+        }
+    </style>
+}
+<div class="hero-wrap hero-bread" style="background-image: url('../../Asset/images/bg_1.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span> </p>
+                <h1 class="mb-0 bread">Kiến thức</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<p hidden id="hid-id">@ViewBag.Id</p>
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ftco-animate">
+                <div class="row" id="table-content">
+
+                </div>
+                <div id="pagination" class="pagination"></div>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-4 sidebar ftco-animate">
+                <div class="sidebar-box">
+                    <form action="#" class="search-form">
+                        <div class="form-group">
+                            <span class="icon ion-ios-search"></span>
+                            <input type="text" id="txt-KeyWord" class="form-control" placeholder="Search...">
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">Danh mục bài viết</h3>
+                    <ul class="categories">
+                        <li><a class="category" data-id="">Tất cả thể loại</a></li>
+                        @foreach (var item in Model)
+                        {
+
+            <li><a class="category" id="a-@item.BlogCateId" data-id="@item.BlogCateId">@item.BlogCateName</a></li>}
+
+                    </ul>
+                </div>
+
+                <div class="sidebar-box">
+                    <h3 class="heading">Recent Blog</h3>
+                    @foreach (var item in recentBlog)
+                    {
+                        string url = $"/chi-tiet-bai-viet/{item.KeyCode}/{item.SeoTittle.ToAscii()}";
+        <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(@item.BlogImage);"></a>
+            <div class="text">
+                <h3 class="heading-1"><a href="@url">@item.Tittle</a></h3>
+                <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> @item.DateCreated</a></div>
+                    <div><a href="#"><span class="icon-person"></span> @item.UserName</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> @item.Seen</a></div>
+                </div>
+            </div>
+        </div>}
+
+
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">Tag Cloud</h3>
+                    <div class="tagcloud">
+                        <a href="#" class="tag-cloud-link">fruits</a>
+                        <a href="#" class="tag-cloud-link">tomatoe</a>
+                        <a href="#" class="tag-cloud-link">mango</a>
+                        <a href="#" class="tag-cloud-link">apple</a>
+                        <a href="#" class="tag-cloud-link">carrots</a>
+                        <a href="#" class="tag-cloud-link">orange</a>
+                        <a href="#" class="tag-cloud-link">pepper</a>
+                        <a href="#" class="tag-cloud-link">eggplant</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">Paragraph</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section> <!-- .section -->
+@section Script{
+    <script src="~/js/blog.js"></script>
+}

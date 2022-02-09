@@ -1,0 +1,24 @@
+﻿@using SharedObject.Extensions
+@model List<SharedObject.ValueObjects.VBlog>
+@foreach (var item in Model)
+{
+    string url = $"/chi-tiet-bai-viet/{item.KeyCode}/{item.SeoTittle.ToAscii()}";
+    <div class="col-md-12 d-flex">
+        <div class="blog-entry align-self-stretch d-md-flex">
+            <a href="blog-single.html" class="block-20" style="background-image: url('@item.BlogImage');">
+            </a>
+            <div class="text d-block pl-md-4">
+                <div class="meta mb-3">
+                    <div><a href="#">@item.DateCreated</a></div>
+                    <div><a href="#">@item.UserName</a></div>
+                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="heading"><a href="@url">@item.Tittle</a></h3>
+                <p>@item.Summary</p>
+                <p><a href="@url" class="btn btn-primary py-2 px-3">Xem tin</a></p>
+            </div>
+        </div>
+    </div>
+}
+
+

@@ -1,0 +1,142 @@
+﻿
+@using SharedObjects
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-12">
+                        <span class="caption-subject font-green-sharp bold uppercase">
+                            Quản lý thông tin công ty
+                        </span>
+                    </div>
+
+                    <div class="portlet-body">
+
+                        <div class="table-toolbar">
+
+                            <div class="col-md-2 col-sm-12 col-xs-12 pull-left">
+                                <a class="btn btn-success" href="#modal-add" data-toggle="modal" id="btn-add">Tạo mới</a>
+                            </div>
+                     
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover table-striped table-responsive">
+                            <thead>
+                                <tr class="text-center">
+
+                                    <td width="10%">Ngày tạo</td>
+                                    <td width="15%">Tên chi nhánh</td>
+                                    <td width="10%">Số điện thoại</td>
+                                    <td width="10%">Email</td>
+                                    <td width="10%">Địa chỉ</td>
+                                    <td width="10%">Vị trí</td>
+                                    <td width="15%">Tác vụ</td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-content">
+                            </tbody>
+                        </table>
+                       
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+@*Modal arear*@
+
+<div class="modal-area">
+    @*Modal thêm, update*@
+    <div class="modal fade" id="modal-add" tabindex="-1" role="columnheader" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Thêm mới, cập nhật thông tin công ty </h4>
+                    <p hidden id="hid-id"></p>
+                </div>
+                <form class="modal-body" id="frm-save">
+
+                    <div class="form-group">
+                        <label for="txt-OfficeName">Tên chi nhánh</label>
+                        <input type="text" class="form-control" id="txt-OfficeName">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txt-Mobile">Số điện thoại</label>
+                        <input type="text" class="form-control" id="txt-Mobile">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txt-Email">Email</label>
+                        <input type="text" class="form-control" id="txt-Email">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-Address">Địa chỉ</label>
+                        <input type="text" class="form-control" id="txt-Address">
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="txt-Position">Vị trí trên trang</label>
+                        <input type="number" class="form-control" id="txt-Position">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="select-Status">Địa điểm</label>
+                        <select id="select-Status" class="form-control">
+                            <option value="">Chọn địa điểm</option>
+                            <option value="1">Hà Nội</option>
+                            <option value="2">Hồ Chí Minh</option>
+
+                        </select>
+
+                    </div>
+
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn blue" id="btn-save">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Kết thúc Modal thêm, update*@
+
+</div>
+
+@section Script{
+    <script src="~/js/Infomation.js"></script>
+
+}
+
+
+
+
+
+

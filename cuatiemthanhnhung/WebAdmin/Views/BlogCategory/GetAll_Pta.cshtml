@@ -1,0 +1,21 @@
+﻿@using SharedObjects
+@model IEnumerable<SharedObject.ValueObjects.VBlogCategory>
+@foreach (var item in Model)
+{
+    <tr id="tr-@item.BlogCateId" class="text-center">
+
+        <td width="10%">
+            @{ 
+                var output = DateTimeService.FormatDateTime((DateTime)item.DateCreated); }
+            @output
+        </td>
+        <td width="15%"> @item.BlogCateName</td>
+        <td width="10%">@item.SeoTittle</td>
+        <td width="15%">@item.SeoDescription</td>
+
+        <td class="text-center">
+            <a class="btn default btn-xs purple update" data-toggle="modal" href="#modal-add" data-id="@item.BlogCateId"> <span class="glyphicon glyphicon-edit"></span></a>
+            <a class="btn default btn-xs red delete" data-id="@item.BlogCateId"><span class="glyphicon glyphicon-trash"></span></a>
+        </td>
+    </tr>
+}

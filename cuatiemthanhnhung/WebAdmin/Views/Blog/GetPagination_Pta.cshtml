@@ -1,0 +1,48 @@
+﻿@{ 
+    Layout = null;
+}
+@using SharedObjects
+@model IEnumerable<SharedObject.ValueObjects.VBlog>
+
+
+@foreach (var item in Model)
+{
+    <tr class="text-center" style="text-align:center" id="tr-@item.BlogId">
+        <td>@item.rc</td>
+        <td>
+            @{
+               
+                string dateDisplay = DateTimeService.FormatDateTime((DateTime)item.DateCreated);
+            }
+            @dateDisplay
+        </td>
+        <td>
+            <a href="/Blog/BlogDetail/@item.BlogId">@item.Tittle</a>
+
+
+        </td>
+        <td>@item.BlogCateName</td>
+        <td>
+            <img class="img-responsive" src="@item.BlogImage" style="height:auto; width:100%" />
+
+        </td>
+  
+        <td>
+            @{
+
+                var result = @item.Status == 1 ? "Bài viết nổi bật" : "Bài viết thông thường";
+        }
+        @result
+
+    </td>
+    <td>@item.Seen </td>
+
+
+    <td class="text-center">
+        <a title="Cập nhật"  target="_blank" class="btn default btn-xs purple" data-toggle="modal" href="/Blog/WriteBlog/@item.BlogId"> <span class="glyphicon glyphicon-edit"></span></a>
+        <a title="Thêm chi tiết" target="_blank" class="btn default btn-xs green"  href="/BlogDetail/BlogDetail/@item.BlogId"> <span class="glyphicon glyphicon-edit"></span></a>
+        <a class="btn default btn-xs red deleteBlog" data-id="@item.BlogId" data-cateid="@item.BlogCateId"><span class="glyphicon glyphicon-trash"></span></a>
+    </td>
+
+</tr>
+}

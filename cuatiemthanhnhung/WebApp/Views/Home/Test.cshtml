@@ -1,0 +1,23 @@
+﻿@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>IIS HLS-VOD</title>
+    <link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script src='https://vjs.zencdn.net/7.4.1/video.js'></script>
+    <script src="https://unpkg.com/videojs-flash/dist/videojs-flash.js"></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+</head>
+<body style="margin:0;padding:0;">
+    <div>
+        <video class="video-js vjs-default-skin vjs-big-play-centered" data-setup='{"controls": true, "autoplay": true, "aspectRatio":"16:9", "fluid": true}'>
+            <source src="https://localhost:44365/Asset/subscribe/index.m3u8" type="application/x-mpegURL" />
+        </video>
+    </div>
+</body>
+</html>
+

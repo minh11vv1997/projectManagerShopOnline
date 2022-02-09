@@ -1,0 +1,28 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityRole>
+@for (int i = 0; i < Model.Count; i++)
+{
+
+
+    int no = i + 1;
+
+    <tr class="text-center">
+        <td>@no</td>
+        <td>@Model[i].Name</td>
+
+        <td class="text-center">
+            <a class="btn default btn-xs purple update" data-toggle="modal" href="#modal-add" data-id="@Model[i].Id" title="Cập nhật"> <span class="glyphicon glyphicon-edit"></span></a>
+
+            <a class="btn default btn-xs red delete" data-id="@Model[i].Name"><span class="glyphicon glyphicon-trash" title="Xóa"></span></a>
+        </td>
+        @*assign role*@
+        <td class="text-center">
+            <a class="btn default btn-xs green update" href="@Url.Action("ManageRole", "Role", new {roleName = Model[i].Name })" title="Assign role"> <span class="glyphicon glyphicon-user"></span></a>
+        </td>
+    </tr>
+}
+
+
+
+
+
+

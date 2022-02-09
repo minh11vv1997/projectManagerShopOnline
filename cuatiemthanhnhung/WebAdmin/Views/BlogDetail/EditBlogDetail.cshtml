@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "EditBlogDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light" style="min-height:900px">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-12">
+                        <span class="caption-subject font-green-sharp bold uppercase">
+                            Cập nhật chi tiết bài viết
+                        </span>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="table-toolbar">
+
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+
+                                <div class="btn-group" role="group" aria-label="Basic example">
+
+                                    <button id="btn-save" type="button" class="btn btn-success">Lưu</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form id="frm-save">
+
+                        @*hidden id*@
+                        <p hidden id="hid-blogId">@ViewBag.blogId</p>
+                        <p hidden id="hid-blogDetailId">@ViewBag.blogDetailId</p>
+
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label for="txt-Number">Số thứ tự đoạn văn trong bài viêt </label>
+                            <input type="number" min="1" class="form-control" id="txt-Number" name="Number">
+                        </div>
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label for="txt-Tittle">Tiêu đề </label>
+                            <input type="text" class="form-control" id="txt-Tittle" name="Tittle">
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="txt-Content">Viết nội dung</label>
+                                <textarea id="txt-Content" name="Content"></textarea>
+
+                            </div>
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+@section Script{
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/js/EditBlogDetail.js"></script>
+}
+
+

@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+@using SharedObjects
+@model List<SharedObject.ValueObjects.VBill>
+
+
+@foreach (var item in Model)
+{
+
+    var result = "";
+
+    if (item.Status == 1)
+    {
+        result = "Đơn vừa tạo";
+
+    }
+
+    else if (item.Status == 2)
+    {
+        result = "Đơn đang ship";
+    }
+
+    else
+    {
+        result = "Đơn hoàn thành";
+    }
+    string dateDisplay = DateTimeService.FormatDateTime((DateTime)item.DateCreated);
+    <tr class="text-center" style="text-align:center" id="tr-@item.BillId">
+        <td>@item.rc</td>
+
+        <td>@dateDisplay</td>
+        <td>@item.FullName</td>
+        <td>@item.Mobile</td>
+        <td>@item.Email</td>
+        <td>@item.Address</td>
+        <td id="total-@item.BillId">@item.Total</td>
+        <td >@result</td>
+       
+        <td class="text-center">
+
+            <a title="Cập nhật trạng thái" data-toggle="modal" data-target="#modal-save" data-id="@item.BillId" class="btn default btn-xs green update"> <span class="glyphicon glyphicon-edit"></span></a>
+
+            <a title="Xem hóa đơn chi tiết" data-toggle="modal" data-target="#modal-billDetail" data-id="@item.BillId" class="btn default btn-xs green billDetail"> <span class="glyphicon glyphicon-list-alt"></span></a>
+
+            <a class="btn default btn-xs red delete" data-id="@item.BillId"><span class="glyphicon glyphicon-trash"></span></a>
+        </td>
+
+    </tr>
+
+}

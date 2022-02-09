@@ -1,0 +1,174 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light" style="height:1200px">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-12">
+                        <span class="caption-subject font-green-sharp bold uppercase">
+                            Quản lý đơn hàng
+                        </span>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="table-toolbar">
+
+
+                            <div class=" col-md-10 pull-right">
+                                <div class="form-group col-md-2 col-xs-12">
+                                    <input type="text" class="form-control" id="txt-fromTime" placeholder="Từ ngày">
+                                </div>
+                                <div class="form-group col-md-2 ">
+                                    <input type="text" class="form-control" id="txt-toTime" placeholder="Đến ngày">
+                                </div>
+
+
+                                <div class="form-group col-md-3 col-xs-12">
+                                    <select id="filter-Status" class="form-control">
+
+                                        <option selected value="0">Tất cả đơn hàng </option>
+                                        <option value="1">Đơn hàng vừa tạo </option>
+                                        <option value="2">Đơn hàng đã đang ship </option>
+                                        <option value="3">Đơn hàng đã giao </option>
+
+                                    </select>
+                                </div>
+                                <div class="btn-group col-md-2 col-xs-12">
+                                    <button id="btn-search" class="btn blue">
+                                        <i class="icon-magnifier"></i>
+                                    </button>
+
+                                    <button id="btn-unsearch" class="btn blue-chambray">
+                                        <i class="fa fa-undo"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive col-md-12">
+                    <table class="table table-bordered table-hover table-striped table-responsive">
+                        <thead>
+                            <tr class="text-center">
+                                <td width="5%">STT</td>
+                                <td>Ngày tạo</td>
+                                <td>Khách hàng</td>
+                                <td>Điện thoại</td>
+                                <td>Email</td>
+                                <td>Địa chỉ</td>
+                                <td>Tổng tiền</td>
+                                <td>Trạng thái</td>
+                                <td width="12%">Tác vụ</td>
+
+                            </tr>
+                        </thead>
+                        <tbody id="table-content">
+                        </tbody>
+                    </table>
+                    <div class="pagination" id="pagination">
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+@*Modal arear*@
+
+<div class="modal-area">
+
+
+    @*Modal thêm, update*@
+    <div class="modal fade" id="modal-save" tabindex="-1" role="columnheader" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">cập nhật trạng thái đơn hàng</h4>
+                    <p hidden id="hid-id"></p>
+
+                </div>
+                <form class="modal-body" id="frm-save">
+
+                    <div class="form-group">
+                        <label for="txt-Status">Chọn trạng thái</label>
+                        <select id="txt-Status" class="form-control" name="Status">
+                            <option value="1">Đơn hàng vừa tạo </option>
+                            <option value="2">Đơn hàng đã đang ship </option>
+                            <option value="3">Đơn hàng đã giao </option>
+
+                        </select>
+                    </div>
+
+
+
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn blue" id="btn-save">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Kết thúc Modal thêm, updaten*@
+
+    @*Modal hóa đơn chi tiết*@
+    <div class="modal fade" id="modal-billDetail" tabindex="-1" role="columnheader" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Hóa đơn chi tiết</h4>
+                    <p hidden id="hid-id"></p>
+
+                </div>
+                <div class="modal-body" id="">
+
+                    <table class="table table-bordered table-hover table-striped table-responsive">
+                        <thead>
+                            <tr class="text-center">
+                                <td width="5%">STT</td>
+                                <td>Tên sản phẩm</td>
+                                <td>Đơn giá</td>
+                                <td>Số lượng</td>
+                                <td>Thành tiền</td>
+
+                            </tr>
+                        </thead>
+                        <tbody id="table-billDetail">
+                        </tbody>
+                    </table>
+                    <div class="col-lg-offset-6 col-md-6">
+                        <h3> Tổng tiền:  <span id="txt-total"></span> </h3>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">Đóng</button>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Kết thúc Modal hóa đơn chi tiết*@
+</div>
+
+@section Script{
+    <script src="~/js/bill.js"></script>
+}
+

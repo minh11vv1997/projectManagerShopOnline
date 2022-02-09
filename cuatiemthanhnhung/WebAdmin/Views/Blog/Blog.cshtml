@@ -1,0 +1,120 @@
+﻿@model List<SharedObject.ValueObjects.VBlogCategory>
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid" >
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light" style="height:1200px">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-12">
+                        <span class="caption-subject font-green-sharp bold uppercase">
+                            Quản lý bài viết
+                        </span>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="table-toolbar">
+
+                            <div class="col-md-2 col-sm-12 col-xs-12 pull-left">
+                                <a class="btn btn-success" href="/Blog/WriteBlog">Tạo mới</a>
+
+                            </div>
+                            <div class=" col-md-10 pull-right">
+                                <div class="form-group col-md-2 col-xs-12">
+                                    <input type="text" class="form-control" id="txt-fromTime" placeholder="Từ ngày">
+                                </div>
+                                <div class="form-group col-md-2 ">
+                                    <input type="text" class="form-control" id="txt-toTime" placeholder="Đến ngày">
+                                </div>
+
+                                <div class="form-group col-md-3 col-xs-12">
+                                    <input type="text" class="form-control" id="txt-keyWord" name="txtStudentName" placeholder="Từ khóa">
+                                </div>
+                                <div class="form-group col-md-3 col-xs-12">
+                                    <select id="select-BlogCateId" class="form-control" asp-items="@(new SelectList(Model,"BlogCateId","BlogCateName"))">
+
+                                        <option selected value="">Chọn thể loại</option>
+
+                                    </select>
+                                </div>
+                                <div class="btn-group col-md-2 col-xs-12">
+                                    <button id="btn-search" class="btn blue">
+                                        <i class="icon-magnifier"></i>
+                                    </button>
+
+                                    <button id="btn-unsearch" class="btn blue-chambray">
+                                        <i class="fa fa-undo"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive col-md-12">
+                    <table class="table table-bordered table-hover table-striped table-responsive">
+                        <thead>
+                            <tr class="text-center">
+                                <td width="5%">STT</td>
+                                <td>Ngày tạo</td>
+                                <td> Tên bài viết</td>
+                                <td>Thể loại</td>
+                                <td width="10%">Ảnh đại diện</td>
+                                <td>Trạng thái</td>
+                                <td>Lượt xem </td>
+                                <td width="15%">Tác vụ</td>
+
+                            </tr>
+                        </thead>
+                        <tbody id="table-blog">
+                            @*Category/GetAllCategory_Pta*@
+                        </tbody>
+                    </table>
+                    <div class="pagination" id="pagination">
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+@*Modal arear*@
+
+<div class="modal-area">
+
+
+    @*Modal thêm, update học viên*@
+    <div class="modal fade" id="modal-addCate" tabindex="-1" role="columnheader" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Thêm mới, cập nhật thể loại</h4>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn blue" id="btn-saveCate">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Kết thúc Modal thêm, update học viên*@
+</div>
+
+@section Script{
+    <script src="~/js/Blog.js"></script>
+}
+

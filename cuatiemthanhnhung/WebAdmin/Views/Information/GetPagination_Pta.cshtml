@@ -1,0 +1,47 @@
+﻿@{
+    @using SharedObjects
+    Layout = null;
+}
+
+@model IEnumerable<SharedObject.ValueObjects.VInformation>
+
+@foreach (var item in Model)
+{
+
+    string dateDisplay = DateTimeService.FormatDateTime((DateTime)@item.DateCreated);
+
+
+
+    <tr class="text-center" style="text-align:center" id="tr-@item.InformationId">
+      
+        <td>
+
+            @dateDisplay
+        </td>
+
+        <td>@item.OfficeName</td>
+
+
+        <td>
+            @item.Mobile
+        </td>
+        <td>
+            @item.Email
+        </td> 
+        <td>
+            @item.Address
+        </td>
+
+        <td>
+            @item.Position
+        </td>
+
+
+
+        <td class="text-center">
+            <a data-id="@item.InformationId" class="btn default btn-xs purple update" data-toggle="modal" href="#modal-add"> <span class="glyphicon glyphicon-edit" title="Cập nhật trạng thái"></span></a>
+            <a class="btn default btn-xs red delete" data-id="@item.InformationId"><span class="glyphicon glyphicon-trash"></span></a>
+        </td>
+
+    </tr>
+}

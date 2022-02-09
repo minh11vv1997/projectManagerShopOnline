@@ -1,0 +1,57 @@
+﻿
+
+.sidebar-box *:last-child {
+    margin-bottom: 0;
+}
+
+.tagcloud .profile-pic > a {
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 7px;
+    margin-right: 4px;
+    border-radius: 4px;
+    color: #333;
+    border: 1px solid #ccc;
+    font-size: 11px;
+}
+
+.profile-pic {
+    position: relative;
+  
+    display: inline-block;
+}
+
+    .profile-pic > a 
+    {
+
+        background-color: aqua
+    }
+
+    .profile-pic:hover .edit {
+        display: block;
+    }
+
+.edit {
+    padding-top: 7px;
+    padding-right: 7px;
+    position: absolute;
+    right: -8px;
+    top: -14px;
+    display: none;
+}
+
+    .edit a {
+        color: #000;
+        border: none
+    }
+
+.error {
+    color: red;
+   
+}
+td{
+
+    vertical-align: middle;
+}
+

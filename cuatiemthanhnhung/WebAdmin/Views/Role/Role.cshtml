@@ -1,0 +1,98 @@
+﻿
+@section Script{
+
+    <script src="~/js/role.js"></script>
+}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light" style="height:500px">
+                <div class="portlet-title">
+
+                    <div class="caption col-md-12 text-center">
+                        <span class="caption-subject font-green-sharp bold uppercase">
+                            Quản lý quyền
+                        </span>
+                    </div>
+
+                    <div class="portlet-body">
+
+                        <div class="table-toolbar">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                <a class="btn btn-success" data-target="#modal-add" data-toggle="modal" id="btn-add">Tạo mới</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive col-md-offset-2 col-md-8">
+                    <table class="table table-bordered table-hover table-striped table-responsive blue-dark">
+                        <thead class="thead-dark">
+                            <tr class="text-center">
+                                <td>STT</td>
+                                <td>Tên quyền</td>
+                                <td>Tác vụ</td>
+                                <td>Phân quyền</td>
+
+
+                            </tr>
+
+                        </thead>
+                        <tbody id="table-content">
+
+                            <!-- Content here-->
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="pagination">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!--Modal arear-->
+
+<div class="modal-area">
+    <div class="modal fade" id="modal-add" tabindex="-1" role="columnheader" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Cập nhật quyền </h4>
+                    <p hidden id="hid-id"></p>
+                </div>
+
+                <form class="modal-body" id="frm-save">
+
+                    <div class="form-group">
+                        <label for="txt-Username">Tên quyền</label>
+                        <input type="text" class="form-control" id="txt-RoleName" name="RoleName" style="color:mediumvioletred">
+                    </div>
+
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn blue" id="btn-save">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Kết thúc Modal thêm, update-->
+
+</div>
+
+
+
+
+

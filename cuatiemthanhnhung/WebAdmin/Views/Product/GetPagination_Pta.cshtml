@@ -1,0 +1,42 @@
+﻿@{
+
+    Layout = null;
+}
+
+@model IEnumerable<SharedObject.ValueObjects.VProduct>
+
+
+@foreach (var item in Model)
+{
+    <tr class="text-center" style="text-align:center" id="tr-@item.ProductId">
+        <td>@item.rc</td>
+        <td>
+            @{
+                string format = "dd/MM/yyyy HH:mm";
+                DateTime date = (DateTime)@item.DateCreated;
+                string dateDisplay = date.ToString(format);
+            }
+            @dateDisplay
+        </td>
+        <td class="text-left">@item.ProductName</td>
+        <td class="text-left">@item.CategoryName</td>
+        <td class="text-left">@item.Price</td>
+        <td>
+            <img class="img-responsive" src="@item.Image" style="height:80px; width:100%" />
+        </td>
+
+        <td>
+            @{
+                string status = item.Status ==1 ? "Sản phẩm nổi bật" : "Sản phẩm thường";
+            } 
+            @status
+
+        </td>
+
+        <td class="text-center">
+            <a data-id="@item.ProductId" class="btn default btn-xs purple update" data-toggle="modal" href="#modal-add"> <span class="glyphicon glyphicon-edit" title="Cập nhật trạng thái"></span></a>
+            <a class="btn default btn-xs red delete" data-id="@item.ProductId"><span class="glyphicon glyphicon-trash"></span></a>
+        </td>
+
+    </tr>
+}
